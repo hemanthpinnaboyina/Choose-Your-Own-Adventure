@@ -14,7 +14,10 @@ class Settings(BaseSettings):
 
     @field_validator("ALLOWED_ORIGINS")
     def parse_allowed_origins(cls, v:str)->List[str]:
-        return v.split(",") if v else []
+        if not v:
+            return []
+        origins = [origin.strip().rstrip("/") for origin in v.split(",") if origin.strip()]
+        return origins
 
     class Config:
         env_file = ".env"
