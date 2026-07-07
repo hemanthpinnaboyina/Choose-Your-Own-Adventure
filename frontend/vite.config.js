@@ -13,7 +13,7 @@ export default defineConfig((command, mode) => {
     ...(env.VITE_DEBUG === "true" && {
       proxy: {
         "/api": {
-          target: "http://localhost:8000",
+          target: "https://choose-your-own-adventure-z0hr.onrender.com",
           changeOrigin: true,
           secure: false
         }
