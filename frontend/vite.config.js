@@ -2,23 +2,8 @@ import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
-export default defineConfig((command, mode) => {
-  const env = loadEnv(mode, process.cwd(), "")
-
-  console.log(env.VITE_DEBUG)
-
+export default defineConfig(() => {
   return {
     plugins: [react()],
-    server: {
-    ...(env.VITE_DEBUG === "true" && {
-      proxy: {
-        "/api": {
-          target: "https://choose-your-own-adventure-z0hr.onrender.com",
-          changeOrigin: true,
-          secure: false
-        }
-      }
-    }
-    )}
   }
 })
