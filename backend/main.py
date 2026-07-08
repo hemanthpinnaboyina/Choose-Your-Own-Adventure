@@ -23,6 +23,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get('/')
+def read_root():
+    return {"message": "Welcome to the Choose Your Own Adventure API"}
+
+
 app.include_router(story.router,prefix=settings.API_PREFIX)
 app.include_router(job.router,prefix=settings.API_PREFIX)
 
